@@ -1,0 +1,8 @@
+pillow
+google.generativeai
+gtts
+deep_translator
+python-dotenv
+flask
+langdetect
+flask-cors
