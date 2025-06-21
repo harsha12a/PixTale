@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>PikTale</title>
+    <title>PixTale</title>
   </head>
   <body>
     <p id="compress">Inka entha compress chesthav ra babu</p>
@@ -14,12 +14,12 @@
       <!-- website -->
       <section class="query-box">
         <!-- query box -->
-        <form action="" class="query-form">
+        <form action="" id="queryForm" class="query-form">
           <label for="fileInput" id="choose-file">Choose the Image file:</label>
           <div id="drop-zone">
             <p>Drag & Drop your file here</p>
             <input type="file" id="fileInput" hidden />
-            <button id="uploadBtn">Choose File</button>
+            <button id="uploadBtn" type="button">Choose File</button>
             <p id="fileName">No File choosen</p>
           </div>
           <label for="language">Select a language:</label>
@@ -28,29 +28,32 @@
             list="language_name"
             id="language"
             type="text"
+            value="English"
             placeholder="Type to see options"
           />
+          <input type="hidden" id="languageValue" name="language" value="en" />
           <datalist id="language_name">
-            <option value="Telugu"></option>
-            <option value="English"></option>
-            <option value="Tamil"></option>
-            <option value="Kanada"></option>
-            <option value="Urdu"></option>
-            <option value="Bengali"></option>
-            <option value="Gujarati"></option>
-            <option value="Kashmiri"></option>
-            <option value="Malayalam"></option>
-            <option value="Marati"></option>
-            <option value="Nepali"></option>
-            <option value="Odia"></option>
-            <option value="Panjabi"></option>
+            <option value="English" data-code="en"></option>
+            <option value="Telugu" data-code="te"></option>
+            <option value="Hindi" data-code="hi"></option>
+            <option value="Tamil" data-code="ta"></option>
+            <option value="Kannada" data-code="kn"></option>
+            <option value="Urdu" data-code="ur"></option>
+            <option value="Bengali" data-code="bn"></option>
+            <option value="Gujarati" data-code="gu"></option>
+            <!-- <option value="Kashmiri" data-code="ks"></option> -->
+            <option value="Malayalam" data-code="ml"></option>
+            <option value="Marathi" data-code="mr"></option>
+            <option value="Nepali" data-code="ne"></option>
+            <option value="Odia" data-code="or"></option>
+            <option value="Punjabi" data-code="pa"></option>
           </datalist>
           <button type="submit" id="submit">Submit</button>
         </form>
       </section>
       <section class="result-box">
         <!-- result box -->
-         
+        <audio id="audio" controls></audio>
       </section>
     </article>
     <script src="scripts.js"></script>
