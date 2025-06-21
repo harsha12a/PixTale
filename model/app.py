@@ -5,7 +5,7 @@ from langdetect import detect
 from deep_translator import GoogleTranslator
 from dotenv import load_dotenv
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -22,35 +22,40 @@ def index():
     return "<h1>PixTale</h1> <p>Welcome to the AI Image and Text Processing API!</p>"
 
 @app.route('/generate_story', methods=['POST'])
-def generate_story(imag):
-    prompt = """
-            1. First, describe what you see in this image in one sentence.
-            2. Then, create an engaging children's story (200-300 words) based on what you see.
-            Make the story suitable for ages 5-12, using simple language and a clear narrative.
-            
-            Format your response as:
-            Caption: [your one-sentence description]
-            Story: [your story]
-            Moral: [your moral from the story]
-            """
+def generate_story():
+    file = request.files['image']
+    imag = Image.open(file.stream)
+
+    if imag is None:
+        return jsonify({"error": "No image provided"}), 400
+    
+    prompt = os.getenv("PROMPT")
+
     response = model.generate_content([prompt, imag])
-    res = response.text
+    res = response.text.strip()
 
     try:
-        caption = res.split('Caption:')[1].split('\n')[0].strip()
-        story = res.split('Story:')[1].split('\n')[0].strip()
-        moral = res.split('Moral:')[1].strip()
+        caption = res.split("Caption:")[1].split("Story")[0].strip().replace("\n", " ")
+
+        story = res.split("Story (1000-1100 words):")[1].split("Moral:")[0].strip().replace("\n", "")
+
+        moral = res.split("Moral:")[1].strip()
+
         return jsonify({
             "caption": caption,
             "story": story,
             "moral": moral
         })
 
-    except:
-        return jsonify({"res" : res.strip()})
+    except Exception as e:
+        return jsonify({"res": res, "error": str(e)})
+
 
 @app.route('/get_audio', methods=['POST'])
-def text_to_speech(text, moral, filename = "output.mp3"):
+def text_to_speech():
+    text = request.form.get('text')
+    moral = request.form.get('moral')
+    filename = request.form.get('filename', 'output.mp3')
     if text is None:
         return None
     language = detect(text)
@@ -59,7 +64,9 @@ def text_to_speech(text, moral, filename = "output.mp3"):
     return tts
 
 @app.route('/translate', methods=['POST'])
-def translate_text(text, target_language='en'):
+def translate_text():
+    text = request.form.get('text')
+    target_language = request.form.get('target_language', 'en')
     if text is None:
         return None
     try:
