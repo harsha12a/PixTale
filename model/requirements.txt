@@ -6,4 +6,3 @@ python-dotenv
 flask
 langdetect
 flask-cors
-io

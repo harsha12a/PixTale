@@ -9,7 +9,7 @@
   <body>
     <p id="compress">Inka entha compress chesthav ra babu</p>
     <article id="website">
-      <h1>PixTale</h1>
+      <h1>PixTale ✨</h1>
       <hr></hr>
       <!-- website -->
       <section class="query-box">
@@ -17,7 +17,7 @@
         <form action="" id="queryForm" class="query-form">
           <label for="fileInput" id="choose-file">Choose the Image file:</label>
           <div id="drop-zone">
-            <p>Drag & Drop your file here</p>
+            <p>📂 Drag & Drop your file here</p>
             <input type="file" id="fileInput" hidden />
             <button id="uploadBtn" type="button">Choose File</button>
             <p id="fileName">No File choosen</p>
@@ -41,7 +41,6 @@
             <option value="Urdu" data-code="ur"></option>
             <option value="Bengali" data-code="bn"></option>
             <option value="Gujarati" data-code="gu"></option>
-            <!-- <option value="Kashmiri" data-code="ks"></option> -->
             <option value="Malayalam" data-code="ml"></option>
             <option value="Marathi" data-code="mr"></option>
             <option value="Nepali" data-code="ne"></option>
@@ -51,11 +50,27 @@
           <button type="submit" id="submit">Submit</button>
         </form>
       </section>
-      <section class="result-box">
-        <!-- result box -->
-        <audio id="audio" controls></audio>
-      </section>
     </article>
+    <!-- Result box -->
+    <section class="result-box">
+      <!-- result box -->
+      
+      <h1>Story</h1>
+      <div id="result"></div>
+      
+      <!-- Story Loading -->
+      <div id="loading-story" style="display: none;">
+        <span class="spinner"></span> Generating story...
+      </div>
+      
+      <h1 id="audio-tag">Audio</h1>
+      <!-- Audio Loading -->
+      <div id="loading-audio" style="display: none;">
+        <span class="spinner"></span> Generating audio...
+      </div>
+      <audio id="audio" style="display: none;" controls></audio>
+    </section>
+
     <script src="scripts.js"></script>
   </body>
 </html>
