@@ -82,7 +82,7 @@ form.addEventListener("submit", async (e) => {
     // === STORY LOADING ===
     show(loadingStory);
 
-    const res = await fetch("http://localhost:5000/generate_story", {
+    const res = await fetch("https://pixtale-wkie.onrender.com/generate_story", {
       method: "POST",
       body: formData,
     });
@@ -111,7 +111,7 @@ form.addEventListener("submit", async (e) => {
     audioForm.append("story", data.story);
     audioForm.append("moral", data.moral);
 
-    const audioRes = await fetch("http://localhost:5000/get_audio", {
+    const audioRes = await fetch("https://pixtale-wkie.onrender.com/get_audio", {
       method: "POST",
       body: audioForm,
     });
