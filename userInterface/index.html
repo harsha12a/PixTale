@@ -9,7 +9,7 @@
   <body>
     <p id="compress">Inka entha compress chesthav ra babu</p>
     <article id="website">
-      <h1>PixTale ✨</h1>
+      <h1>PixTale</h1>
       <hr></hr>
       <!-- website -->
       <section class="query-box">
@@ -28,10 +28,9 @@
             list="language_name"
             id="language"
             type="text"
-            value="English"
             placeholder="Type to see options"
           />
-          <input type="hidden" id="languageValue" name="language" value="en" />
+          <input type="hidden" id="languageValue" name="language" />
           <datalist id="language_name">
             <option value="English" data-code="en"></option>
             <option value="Telugu" data-code="te"></option>
@@ -56,12 +55,13 @@
       <!-- result box -->
       
       <h1>Story</h1>
-      <div id="result"></div>
-      
-      <!-- Story Loading -->
-      <div id="loading-story" style="display: none;">
-        <span class="spinner"></span> Generating story...
+      <div id="result">
+        <!-- Story Loading -->
+        <div id="loading-story" style="display: none;">
+          <span class="spinner"></span> Generating story...
+        </div>
       </div>
+      
       
       <h1 id="audio-tag">Audio</h1>
       <!-- Audio Loading -->

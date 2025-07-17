@@ -33,7 +33,7 @@ function getLanguageCode() {
       return opt.getAttribute("data-code") || "en";
     }
   }
-  return "en";
+  return null;
 }
 
 // Show/hide elements
@@ -68,6 +68,10 @@ form.addEventListener("submit", async (e) => {
     return;
   }
   const lang_code = getLanguageCode();
+  if(!lang_code) {
+    alert("Plase select a language");
+    return;
+  }
   
   const formData = new FormData();
   formData.append("image", file);

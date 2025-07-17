@@ -1,282 +1,238 @@
+/* RESET & BASE */
 * {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  /* box-sizing: border-box; */
-  color: rgb(209, 206, 206);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* */
 body {
-  font-size: 16px;
-  background-color: rgb(32, 33, 33);
+  background: #0f1117;
+  color: #e0e0e0;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1rem;
 }
 
-#website {
-  background-color: rgb(45, 45, 45);
-  /* margin: 0; */
-  padding: 1rem;
-  max-width: 1200px;
-  margin: 3rem auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1rem;
-  border: dotted;
-  border-color: #888;
-}
-
+/* HEADER */
 h1 {
-  font-size: 5rem;
-  margin: 1rem;
-  width: 100%;
+  font-size: 3.5rem;
   text-align: center;
-  /* background-color: rgb(169, 169, 139); */
+  color: #90caf9;
+  margin-bottom: 1rem;
 }
 
 hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 1rem 0 2rem;
   width: 100%;
-  border: 1px dashed;
 }
 
-p {
-  font-size: 1.5rem;
+/* MAIN CONTAINER */
+#website, .result-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* FORMS */
 .query-form {
   display: flex;
   flex-direction: column;
-  border-left: 4px dashed rgb(181, 176, 176);
-  border-right: 4px dashed rgb(181, 176, 176);
-  padding: 20px 70px;
+  gap: 1.5rem;
 }
 
 label {
-  margin: 0.5rem 0;
-  font-size: 3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #bbb;
 }
 
-input {
-  margin: 0 50px;
-  width: 30rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  background-color: rgb(32, 33, 33);
-  color: black;
-  font-size: 1.3rem;
-  font-weight: 100;
-  padding: 0 20px;
-  color: rgb(209, 206, 206);
+input[type="text"],
+input[list],
+input[type="file"] {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  background: #1a1c22;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  outline: none;
+  width: 100%;
 }
 
-
+/* DROP ZONE */
 #drop-zone {
-  border: 2px dashed #888;
-  border-radius: 0.7rem;
+  padding: 2rem;
+  border: 2px dashed #666;
+  border-radius: 10px;
   text-align: center;
-  width: 30rem;
-  margin: 0 auto;
-  transition: background-color 0.2s;
+  background: #1e2129;
+  transition: background-color 0.3s ease;
 }
 
-#drop-zone.dragover {
-  background-color: #a7a8a9;
-  border-color: #1e90ff;
+#drop-zone:hover {
+  background-color: #2a2e38;
 }
 
 #uploadBtn {
-  margin-top: 2px;
-  padding: 8px 15px;
-  background-color: rgb(32, 33, 33);
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
   border-radius: 0.5rem;
-  border-color: whitesmoke;
-  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 #uploadBtn:hover {
-  background-color: rgba(144, 152, 155, 0.625);
-  color: white;
-  transition: all 0.3s;
-  cursor: pointer;
-  border-top: 10px solid red;
-  border-left: none;
+  background-color: #1976d2;
 }
 
+#fileName {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #aaa;
+}
+
+/* SUBMIT BUTTON */
 #submit {
-  margin: 2rem;
-  width: fit-content;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
   align-self: center;
-  padding: 15px 40px;
-  border-radius: 0.7rem;
-  background-color: rgb(32, 33, 33);
-  color: rgb(209, 206, 206);
-  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
 }
 
 #submit:hover {
-  background-color: rgba(144, 152, 155, 0.625);
-  color: white;
-  transition: all 0.3s;
-  cursor: pointer;
+  background-color: #388e3c;
 }
 
-#compress {
+/* RESULT SECTION */
+.result-box {
   display: none;
-}
-
-#loading-story,
-#loading-audio {
-  font-weight: bold;
-  color: #fff;
-  margin: 1rem 0;
-  text-align: center;
+  margin-top: 3rem;
 }
 
 #result {
+  margin-top: 1rem;
   font-size: 1.1rem;
-  padding: 10px;
+  padding: 1rem;
+  background: #181a1f;
+  border-radius: 0.5rem;
+  border: 1px solid #333;
+  white-space: pre-wrap;
+}
+
+/* AUDIO */
+#audio-tag {
+  display: none;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: #90caf9;
 }
 
 audio {
+  display: block;
   margin: 1rem auto;
+  width: 100%;
+  max-width: 600px;
+  background: #1a1c22;
+  border-radius: 8px;
 }
 
+/* SPINNER */
 .spinner {
   display: inline-block;
   width: 30px;
   height: 30px;
-  border: 3px solid #ccc;
-  border-top: 3px solid #333;
+  border: 4px solid #444;
+  border-top-color: #90caf9;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   vertical-align: middle;
-  margin-right: 8px;
 }
 
 @keyframes spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.text {
+#loading-story,
+#loading-audio {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
   font-size: 1.1rem;
-  padding: 0 50px;
-  line-height: 1.6;
+  color: #bbb;
 }
 
-.result-box {
+/* COMPRESS MESSAGE */
+#compress {
   display: none;
-  width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background-color: rgb(45, 45, 45);
-  border-radius: 1rem;
-  border: dotted;
-  border-color: #888;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #999;
+  margin-bottom: 2rem;
 }
 
-
-@media screen and (max-width: 750px) {
+/* RESPONSIVE */
+@media (max-width: 768px) {
   h1 {
-    font-size: 4rem;
-    margin: 0;
-  }
-
-  p {
-    font-size: 1.3rem;
+    font-size: 2.2rem;
   }
 
   .query-form {
-    /* background-color: red; */
-    border: 0;
-    padding: 20px 30px;
-    /* background-color: red; */
-    width: 500px;
-  }
-
-  label {
-    font-size: 2.3rem;
-  }
-
-  input {
-    width: 25rem;
-    margin: 0;
+    gap: 1rem;
   }
 
   #drop-zone {
-    width: 25rem;
-    font-size: 1.3rem;
-    margin: 0;
+    padding: 1.5rem;
   }
 
   #submit {
-    padding: 10px 20=5px;
-    font-size: 1.7 rem;
-  }
-
-  .text {
-    font-size: 0.9rem;
-    padding: 0 20px;
+    width: 100%;
   }
 }
 
-#audio-tag {
-  display: none;
-}
-
-@media screen and (max-width: 480px) {
-  .text {
-    /* font-size: 0.8rem; */
-    padding: 0;
+@media (max-width: 480px) {
+  #website,
+  .result-box {
+    padding: 1.5rem 1rem;
   }
 
-  h1 {
-    font-size: 2.5rem;
-    margin: 0;
+  input[type="text"],
+  input[list] {
+    font-size: 0.95rem;
   }
 
-  p {
-    font-size: 0.7rem;
-  }
-
-  .query-form {
-    padding: 20px 30px;
-    /* background-color: red; */
-    width: 350px;
-  }
-
-  label {
-    font-size: 1.5rem;
-  }
-
-  input {
-    width: 18rem;
-    font-size: 0.7rem;
-    margin: 0;
-  }
-
-  #drop-zone {
-    width: 18rem;
-    margin: 0;
-  }
-
+  #uploadBtn,
   #submit {
-    padding: 7px 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    padding: 0.7rem;
   }
-
 }
 
-
-@media screen and (max-width: 320px) {
+@media (max-width: 320px) {
   #website {
     display: none;
   }
 
   #compress {
-    display: inline;
-    font-size: 2rem;
+    display: block;
   }
 }
