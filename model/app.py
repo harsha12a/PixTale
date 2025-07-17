@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
+from waitress import serve
 import io
 
 app = Flask(__name__)
@@ -108,4 +109,4 @@ def get_audio():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    serve(app, host='0.0.0.0', port=5000)
